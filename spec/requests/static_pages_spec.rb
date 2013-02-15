@@ -4,7 +4,7 @@ describe "Static Pages" do
   let(:title_prefix) {"Ruby on Rails Tutorial Sample App | "}
 
   describe "Home Page" do
-    before {visit '/static_pages/home'}
+    before {visit root_path}
 
   	it "should have the content 'Sample App'" do
   		page.should have_selector('h1', text: 'Sample App')
@@ -21,7 +21,7 @@ describe "Static Pages" do
   end
 
   describe "Help Page" do
-    before {visit '/static_pages/help'}
+    before {visit help_path}
 
   	it "should have the content 'Help'" do
   		page.should have_selector('h1', text: 'Help')
@@ -34,7 +34,7 @@ describe "Static Pages" do
   end
 
   describe "About Page" do 
-    before {visit '/static_pages/about'}
+    before {visit about_path}
 
   	it "should have the content 'About Us'" do
   		page.should have_selector('h1', text: 'About Us')
@@ -47,7 +47,7 @@ describe "Static Pages" do
   end
 
   describe "Contact Page" do
-    before {visit '/static_pages/contact'}
+    before {visit contact_path}
 
     it "should have the content 'Contact'" do
       page.should have_selector('h1', text: 'Contact')
