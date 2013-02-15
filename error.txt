@@ -1,0 +1,46 @@
+ERROR:  Error installing pg:
+	ERROR: Failed to build gem native extension.
+
+        /usr/bin/ruby1.9.1 extconf.rb
+checking for pg_config... yes
+Using config values from /usr/bin/pg_config
+checking for libpq-fe.h... yes
+checking for libpq/libpq-fs.h... yes
+checking for PQconnectdb() in -lpq... yes
+checking for PQconnectionUsedPassword()... yes
+checking for PQisthreadsafe()... yes
+checking for PQprepare()... yes
+checking for PQexecParams()... yes
+checking for PQescapeString()... yes
+checking for PQescapeStringConn()... yes
+checking for PQgetCancel()... yes
+checking for lo_create()... yes
+checking for pg_encoding_to_char()... yes
+checking for PQsetClientEncoding()... yes
+checking for rb_encdb_alias()... yes
+checking for rb_enc_alias()... no
+checking for struct pgNotify.extra in libpq-fe.h... yes
+checking for unistd.h... yes
+checking for ruby/st.h... yes
+creating extconf.h
+creating Makefile
+
+make
+compiling compat.c
+compiling pg.c
+pg.c: In function ‘pgconn_wait_for_notify’:
+pg.c:2117:3: warning: ‘rb_thread_select’ is deprecated (declared at /usr/include/ruby-1.9.1/ruby/intern.h:379) [-Wdeprecated-declarations]
+pg.c: In function ‘pgconn_block’:
+pg.c:2592:3: error: format not a string literal and no format arguments [-Werror=format-security]
+pg.c:2598:3: warning: ‘rb_thread_select’ is deprecated (declared at /usr/include/ruby-1.9.1/ruby/intern.h:379) [-Wdeprecated-declarations]
+pg.c:2607:4: error: format not a string literal and no format arguments [-Werror=format-security]
+pg.c: In function ‘pgconn_locreate’:
+pg.c:2866:11: warning: variable ‘lo_oid’ set but not used [-Wunused-but-set-variable]
+pg.c: In function ‘find_or_create_johab’:
+pg.c:3947:3: warning: implicit declaration of function ‘rb_encdb_alias’ [-Wimplicit-function-declaration]
+cc1: some warnings being treated as errors
+make: *** [pg.o] Error 1
+
+
+Gem files will remain installed in /usr/lib/ruby/gems/1.9.1/gems/pg-0.12.2 for inspection.
+Results logged to /usr/lib/ruby/gems/1.9.1/gems/pg-0.12.2/ext/gem_make.out
