@@ -13,7 +13,23 @@ describe "Static Pages" do
     let (:title) {''}
     before { visit root_path }
   	it_should_behave_like "a static page" 
-    it { page.should_not have_selector('title', text: ' | ') }
+    it { page.should_not have_selector('title', text: ' | ') }\
+
+    describe "for signed-in users" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        FactoryGirl.create(:micropost, user: user, content: "Lorem")
+        FactoryGirl.create(:micropost, user: user, content: "Ipsum")
+        sign_in user
+        visit root_path
+      end
+
+      it "should render the user's feed" do
+        user.feed.each do |item|
+          page.should have_selector("li##{item.id}", text: item.content)
+        end
+      end
+    end
   end
 
   describe "Help Page" do
