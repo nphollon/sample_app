@@ -41,6 +41,10 @@ describe User do
     it { should be_admin }
   end
 
+  it "should not allow admin attribute to be mass-assigned" do
+    expect { User.new(admin: true) }.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+  end
+
   describe "when name is not present" do
   	before { @user.name = " " }
   	it { should_not be_valid }
